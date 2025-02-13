@@ -1,59 +1,65 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+	--color-primary: #00d890;
+}
+
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 900;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebblackfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebblackfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 700;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebboldfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebboldfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 800;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebextrablackfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebextrablackfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 600;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebextraboldfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebextraboldfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 300;
-	src: url("../public/fonts/iranyekan/woff/iranyekanweblightfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanweblightfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 500;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebmediumfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebmediumfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 400;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebregularfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebregularfanum.woff") format("woff");
 }
 
 @font-face {
 	font-family: "iranyekan";
 	font-style: normal;
 	font-weight: 200;
-	src: url("../public/fonts/iranyekan/woff/iranyekanwebthinfanum.woff") format("woff");
+	src: url("/fonts/iranyekan/woff/iranyekanwebthinfanum.woff") format("woff");
 }
 
 :root {
