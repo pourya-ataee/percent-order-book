@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite --port",
+		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
@@ -17,8 +17,9 @@
 		"prop-types": "^15.8.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"react-lottie": "^1.2.10",
+		"react-lottie-player": "^2.1.0",
 		"react-router-dom": "^6.29.0",
+		"react-swipeable": "^7.0.2",
 		"react-toastify": "^11.0.3",
 		"tailwindcss": "^4.0.6"
 	},
@@ -27,7 +28,6 @@
 		"@types/node": "^22.13.2",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
-		"@types/react-lottie": "^1.2.10",
 		"@vitejs/plugin-react": "^4.3.4",
 		"eslint": "^9.20.1",
 		"eslint-config-prettier": "^10.0.1",

@@ -26,6 +26,10 @@ function Footer() {
 					<div className="flex gap-2 items-center text-sm justify-center">
 						<p>کلیه حقوق این سایت متعلق به بیت‌پین است</p>
 						<span>v1.0.0</span>
+						<span>|</span>
+						<span>
+							Made with ❤️ by <span className="font-semibold">Pourya Ataee</span>
+						</span>
 					</div>
 				</div>
 			</div>

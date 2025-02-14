@@ -1,3 +1,5 @@
+export type TCurrency = "IRT" | "USDT";
+
 interface MarketTag {
 	id: number;
 	name: string;
@@ -33,7 +35,7 @@ export interface MarketResult {
 		id: number;
 		title: string;
 		title_fa: string;
-		code: string;
+		code: TCurrency;
 		tradable: boolean;
 		for_test: boolean;
 		image: string;

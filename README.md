@@ -26,4 +26,4 @@ Once the setup is complete, start the development server:
 npm run dev
 ```
 
-Make sure your backend server is running on the specified `BASE_URL` to avoid any proxy-related issues.
+Make sure your server is running on the specified `BASE_URL` to avoid any proxy-related issues.

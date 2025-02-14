@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
+import { tabs } from "../constants/tabs";
+import Tabs from "../components/common/Tabs";
 import Loading from "../components/common/Loading";
-import { Market, MarketResult } from "../models/Market";
 import MarketList from "../components/pages/home/MarketList";
-import SwipeableTabs from "../components/common/SwipeableTabs";
 import { bitpinEndpoints } from "../services/api/BitpinEndpoints";
+import { Market, MarketResult, TCurrency } from "../models/Market";
 
 function Home() {
+	const [page, setPage] = useState<number>(1);
+	const [term, setTerm] = useState<string>("");
 	const [data, setData] = useState<Market | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
+	const [activeTab, setActiveTab] = useState<TCurrency>("IRT");
 
 	const fetchData = async () => {
 		try {
@@ -23,24 +27,47 @@ function Home() {
 		fetchData();
 	}, []);
 
-	const filterMarketData = useCallback<(currency2: "IRT" | "USDT") => MarketResult[]>(
-		(currency2) => {
-			return data?.results.filter((e) => e.currency2.code === currency2) || [];
+	const filterMarketData = useCallback<(currency: TCurrency) => MarketResult[]>(
+		(currency) => {
+			if (!data?.results) return [];
+
+			const lowerTerm = term.toLowerCase();
+
+			return data.results
+				.filter((e) => e.currency2.code === currency)
+				.filter((e) => {
+					const { currency1 } = e;
+					return currency1.code.toLowerCase().includes(lowerTerm) || currency1.title.toLowerCase().includes(lowerTerm) || currency1.title_fa.includes(term);
+				});
 		},
-		[data],
+		[data, term],
 	);
+
+	useEffect(() => {
+		if (page !== 1) {
+			setPage(1);
+		}
+	}, [term]);
 
 	return loading ? (
 		<Loading />
 	) : (
 		<div className="flex flex-col gap-11 w-full">
-			<h2 className="text-2xl font-medium">لیست بازارها</h2>
-			<SwipeableTabs
-				tabs={[
-					{ label: "پایه تومان", content: <MarketList data={filterMarketData("IRT")} /> },
-					{ label: "پایه تتر", content: <MarketList data={filterMarketData("USDT")} /> },
-				]}
-			/>
+			<h2 className="text-2xl font-medium text-[var(--bp-font-default)]">لیست بازارها</h2>
+			<div className="flex items-end justify-between border-b border-b-[#666]">
+				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
+				<div className="relative mb-2">
+					<input
+						value={term}
+						onChange={(e) => setTerm(e.currentTarget.value)}
+						type="text"
+						placeholder="نام ارزدیجیتال را جستجو کنید"
+						className="rounded-lg h-12 flex items-center text-xs leading-[18px] pe-3.5 ps-[52px] border border-[var(--bp-font-gray-faded)] outline-none w-[300px]"
+					/>
+					<img src="/images/svg/search.svg" alt="search" className="absolute top-1/2 right-3.5 -translate-y-1/2" />
+				</div>
+			</div>
+			<MarketList data={filterMarketData(activeTab)} page={page} setPage={setPage} activeTab={activeTab} setActiveTab={setActiveTab} />
 		</div>
 	);
 }
