@@ -64,7 +64,9 @@
 
 :root {
 	font-family: "iranyekan", sans-serif;
+	--bp-font-default: #121212;
 	--bp-font-primary: #4e4f4f;
+	--bp-font-gray-faded: #949696;
 	--bp-bg-base-intense: #fafefd;
 	--bp-bg-gray-faded: #e7ebea;
 	--bp-border-gray-highlighted: #4e4f4f;
@@ -72,7 +74,9 @@
 }
 
 [data-theme="dark"]:root {
+	--bp-font-default: #fafefd;
 	--bp-font-primary: #b9bcbb;
+	--bp-font-gray-faded: #818383;
 	--bp-bg-base-intense: #121212;
 	--bp-bg-gray-faded: #202020;
 	--bp-border-gray-highlighted: #b9bcbb;

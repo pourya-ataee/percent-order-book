@@ -5,7 +5,7 @@ interface MarketTag {
 	has_chart: boolean;
 }
 
-interface MarketResult {
+export interface MarketResult {
 	id: number;
 	currency1: {
 		id: number;

@@ -4,9 +4,10 @@ import DarkModeToggle from "../common/DarkModeToggle";
 
 function Header() {
 	return (
-		<header className="w-full px-6 sticky top-0">
+		<header className="w-full px-6 sticky top-0 bg-[var(--bp-bg-base-intense)] z-10">
 			<div className="max-w-[1920px] mx-auto flex items-center justify-between gap-6">
 				<div className="flex items-center gap-6">
+					<h1 className="hidden">بیت‌پین</h1>
 					<Link to={"/"}>
 						<Logo className={"h-16 w-32 *:transition dark:[&_#logo-svg-text]:fill-[#d8d8d8] [&_#logo-svg-text]:fill-[#333]"} />
 					</Link>
