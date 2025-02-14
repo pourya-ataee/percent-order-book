@@ -12,7 +12,7 @@ const DarkModeToggle = () => {
 
 	return (
 		<button className="hover:[&_path]:stroke-primary cursor-pointer outline-none" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-			{theme === "dark" ? <Moon className="*:transition" /> : <Sun className="*:transition" />}
+			{theme === "dark" ? <Sun /> : <Moon />}
 		</button>
 	);
 };

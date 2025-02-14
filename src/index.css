@@ -64,4 +64,11 @@
 
 :root {
 	font-family: "iranyekan", sans-serif;
+	--bp-font-primary: #4e4f4f;
+	--bp-bg-base-intense: #fafefd;
+}
+
+[data-theme="dark"]:root {
+	--bp-font-primary: #b9bcbb;
+	--bp-bg-base-intense: #121212;
 }
