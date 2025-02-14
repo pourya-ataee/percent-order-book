@@ -1,9 +1,11 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 
+const baseURL = import.meta.env.VITE_BASE_URL;
+const timeout = import.meta.env.VITE_REQUEST_TIMEOUT;
 const axiosClient = axios.create({
-	baseURL: process.env.REACT_APP_API_BASE_URL,
-	timeout: Number(process.env.REACT_APP_API_REQUEST_TIMEOUT) || 10000,
+	baseURL: baseURL,
+	timeout: Number(timeout) || 10000,
 });
 
 axiosClient.interceptors.request.use(async (config) => {
@@ -38,7 +40,7 @@ axiosClient.interceptors.response.use(
 
 const request = async <T, R>(method: AxiosRequestConfig["method"], config: AxiosRequestConfig, mapper: (data: T) => T | R = (d) => d): Promise<T | R> => {
 	const response: AxiosResponse = await axiosClient.request({ method, ...config });
-	return mapper(response.data?.data);
+	return mapper(response?.data);
 };
 
 export const httpClient = {

@@ -1,7 +1,7 @@
 function Logo({ className }: { className?: string }) {
 	return (
 		<svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 753 100" width="753" height="100" fill="none">
-			<g clip-path="url(#A)">
+			<g clipPath="url(#A)">
 				<path
 					d="M577.39 50h-35l35-50h35l-35 50zm105 0h-35l-35 50h35l35-50zm35 50h35l-35-50h-35l35 50zm-175-50h-35l-35 50h35l35-50zm52.51 25h-35l17.51 25h35L594.9 75zm105-50h35.09l17.45-25h-35L699.9 25zM507.37 0h-35l26.26 37.5h35L507.37 0zm140 0h-35l26.25 37.5h35L647.37 0z"
 					fill="#4ef09d"
