@@ -1,4 +1,4 @@
-export type TCurrency = "IRT" | "USDT";
+import { TCurrency } from "../types/TCurrency";
 
 interface MarketTag {
 	id: number;

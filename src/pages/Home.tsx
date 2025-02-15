@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { tabs } from "../constants/tabs";
+import { marketTabs } from "../constants/tabs";
 import Tabs from "../components/common/Tabs";
+import { TCurrency } from "../types/TCurrency";
 import Loading from "../components/common/Loading";
 import MarketList from "../components/pages/home/MarketList";
 import { bitpinEndpoints } from "../services/api/BitpinEndpoints";
-import { Market, MarketResult, TCurrency } from "../models/Market";
+import { Market, MarketResult } from "../models/Market";
 
 function Home() {
 	const [page, setPage] = useState<number>(1);
@@ -55,7 +56,7 @@ function Home() {
 		<div className="flex flex-col gap-11 w-full">
 			<h2 className="text-2xl font-medium text-[var(--bp-font-default)]">لیست بازارها</h2>
 			<div className="flex items-end justify-between border-b border-b-[#666]">
-				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
+				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={marketTabs} />
 				<div className="relative mb-2">
 					<input
 						value={term}

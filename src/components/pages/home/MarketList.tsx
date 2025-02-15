@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import MarketCard from "./MarketCard";
 import Arrow from "../../../assets/svg/Arrow";
-import { tabs } from "../../../constants/tabs";
+import { marketTabs } from "../../../constants/tabs";
 import { useSwipeable } from "react-swipeable";
-import { MarketResult, TCurrency } from "../../../models/Market";
+import { TCurrency } from "../../../types/TCurrency";
+import { MarketResult } from "../../../models/Market";
 
 interface IProps {
 	page: number;
@@ -16,7 +17,7 @@ interface IProps {
 function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 	const itemsPerPage = 10;
 	const totalPages = Math.ceil(data.length / itemsPerPage);
-	const [dragX, setDragX] = useState(0);
+	const [dragX, setDragX] = useState<number>(0);
 	const [sort, setSort] = useState<string>("");
 	const [isHorizontalSwipe, setIsHorizontalSwipe] = useState<boolean | null>(null);
 
@@ -117,7 +118,7 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 		});
 	};
 
-	const activeIndex = tabs.findIndex((tab) => tab.value === activeTab);
+	const activeIndex = marketTabs.findIndex((tab) => tab.value === activeTab);
 	const swipeHandlers = useSwipeable({
 		onSwiping: (e) => {
 			if (isHorizontalSwipe === null) {
@@ -130,10 +131,10 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 		onSwiped: (e) => {
 			if (isHorizontalSwipe) {
 				setDragX(0);
-				if (e.deltaX > 50 && activeIndex < tabs.length - 1) {
-					setActiveTab(tabs[activeIndex + 1].value);
+				if (e.deltaX > 50 && activeIndex < marketTabs.length - 1) {
+					setActiveTab(marketTabs[activeIndex + 1].value);
 				} else if (e.deltaX < -50 && activeIndex > 0) {
-					setActiveTab(tabs[activeIndex - 1].value);
+					setActiveTab(marketTabs[activeIndex - 1].value);
 				}
 			}
 			setIsHorizontalSwipe(null);

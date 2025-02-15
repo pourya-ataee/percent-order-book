@@ -1,19 +1,18 @@
-import React, { SetStateAction, Dispatch } from "react";
-import { TCurrency } from "../../models/Market";
+import { SetStateAction, Dispatch } from "react";
 
-interface Tab {
+interface Tab<T> {
 	label: string;
-	value: TCurrency;
+	value: T;
 }
 
-interface IProps {
-	tabs: Tab[];
-	activeTab: TCurrency;
-	setActiveTab: Dispatch<SetStateAction<TCurrency>>;
+interface IProps<T> {
+	tabs: Tab<T>[];
+	activeTab: T;
+	setActiveTab: Dispatch<SetStateAction<T>>;
 }
 
-const Tabs: React.FC<IProps> = ({ tabs, activeTab, setActiveTab }) => {
-	const handleTabClick = (value: TCurrency) => {
+const Tabs = <T,>({ tabs, activeTab, setActiveTab }: IProps<T>) => {
+	const handleTabClick = (value: T) => {
 		setActiveTab(value);
 	};
 

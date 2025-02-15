@@ -19,19 +19,19 @@ axiosClient.interceptors.response.use(
 	(error: AxiosError) => {
 		if (!error.response) {
 			if (typeof window !== "undefined") {
-				toast.error("Network Error");
+				toast.error("خطای شبکه! لطفاً اتصال اینترنت خود را بررسی کنید");
 			}
 			return Promise.reject(error);
 		}
 
 		const { status } = error.response;
 		const errorMessages: Record<number, string> = {
-			500: "Internal Server Error",
-			404: "404 - Not Found",
+			500: "خطای داخلی سرور! لطفاً بعداً دوباره امتحان کنید",
+			404: "صفحه مورد نظر یافت نشد",
 		};
 
 		if (typeof window !== "undefined") {
-			toast.error(errorMessages[status] || "Something went wrong...");
+			toast.error(errorMessages[status] || "خطایی رخ داده است. لطفاً دوباره تلاش کنید");
 		}
 
 		return Promise.reject(error);

@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 import { MarketResult } from "../../../models/Market";
+import { useMarketStore } from "../../../stores/market";
 import { formatNumberWithCommas, formatPriceChange } from "../../../utils";
 
 function MarketCard({ market }: { market: MarketResult }) {
+	const updateMarket = useMarketStore((state) => state.updateMarket);
 	return (
 		<div className="px-3 py-2 flex items-center gap-2 justify-between border-b border-[var(--bp-sf-border-gray-faded)]">
 			<div className="flex items-center gap-2 flex-grow max-w-[calc(34%-6px)]">
@@ -25,9 +28,16 @@ function MarketCard({ market }: { market: MarketResult }) {
 				{formatPriceChange(market.price_info.change)}
 			</div>
 			<div className="w-[calc(22%-6px)] justify-end flex">
-				<div className="flex items-center gap-1 cursor-pointer w-fit text-[var(--bp-font-default)]">
+				<Link
+					to={`/markets/${market.id}`}
+					className="flex items-center gap-1 cursor-pointer w-fit text-[var(--bp-font-default)]"
+					onClick={() => {
+						updateMarket(market);
+						sessionStorage.setItem("market", JSON.stringify(market));
+					}}
+				>
 					اطلاعات بیشتر <img src="/images/svg/left.svg" alt="left" />
-				</div>
+				</Link>
 			</div>
 		</div>
 	);

@@ -15,6 +15,7 @@ function Footer() {
 					</div>
 					<div className="flex items-center gap-4">
 						<a
+							target="_blank"
 							href="https://bitpin.ir/app-download/"
 							className="py-2 px-3 border border-[var(--bp-bp-border-gray-highlighted)] rounded-lg hover:border-primary transition flex items-center justify-center hover:text-primary"
 						>
