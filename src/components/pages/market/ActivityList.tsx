@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import Decimal from "decimal.js";
 import ActivityCard from "./ActivityCard";
 import { Match } from "../../../models/Match";
 import { useSwipeable } from "react-swipeable";
@@ -6,7 +7,6 @@ import { Order } from "../../../models/Activity";
 import { TActivity } from "../../../types/TActivity";
 import { activityTabs } from "../../../constants/tabs";
 import { useMarketStore } from "../../../stores/market";
-import Decimal from "decimal.js";
 import { formatNumberWithCommas } from "../../../utils";
 
 interface IProps {
@@ -84,17 +84,17 @@ function ActivityList({ data, activeTab, setActiveTab }: IProps) {
 
 	return data.length ? (
 		<>
-			<div className="flex gap-4">
+			<div className="flex max-md:flex-col gap-4">
 				<div className="flex-grow overflow-hidden">
 					<div className="px-3 pb-3 flex items-center gap-3 justify-between border-b border-[var(--bp-sf-border-gray-faded)] text-sm text-[var(--bp-font-gray-default)]">
 						<div className="w-[calc(33%-8px)]">
-							<div className="flex items-center gap-2 cursor-pointer w-fit">قیمت ({market?.currency2.code})</div>
+							<div className="flex items-center gap-2 cursor-pointer w-fit max-md:text-xs">قیمت ({market?.currency2.code})</div>
 						</div>
 						<div className="w-[calc(33%-8px)]">
-							<div className="text-center flex items-center gap-2 cursor-pointer w-fit">مقدار ({market?.currency1.code})</div>
+							<div className="text-center flex items-center gap-2 cursor-pointer w-fit max-md:text-xs">مقدار ({market?.currency1.code})</div>
 						</div>
 						<div className="w-[calc(33%-8px)]">
-							<div className="flex items-center gap-2 cursor-pointer w-fit">{activeTab === "match" ? "زمان" : `کل (${market?.currency2.code})`}</div>
+							<div className="flex items-center gap-2 cursor-pointer w-fit max-md:text-xs">{activeTab === "match" ? "زمان" : `کل (${market?.currency2.code})`}</div>
 						</div>
 					</div>
 					<ul
@@ -114,16 +114,22 @@ function ActivityList({ data, activeTab, setActiveTab }: IProps) {
 						{!!result && (
 							<div className="flex flex-col gap-4 p-3 rounded-lg text-[var(--bp-font-default)]">
 								<div className="flex flex-col">
-									<span className="text-sm text-[var(--bp-font-gray-default)]">مجموع باقی‌مانده ({market?.currency1.code}):</span>
-									<span className="text-[var(--bp-font-default)] font-medium block text-center">{formatNumberWithCommas(result.remain.toString())}</span>
+									<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">مجموع باقی‌مانده ({market?.currency1.code}):</span>
+									<span className="text-[var(--bp-font-default)] font-medium block text-center max-md:text-sm">
+										{formatNumberWithCommas(result.remain.toString())}
+									</span>
 								</div>
 								<div className="flex flex-col">
-									<span className="text-sm text-[var(--bp-font-gray-default)]">مجموع قابل پرداخت ({market?.currency2.code}):</span>
-									<span className="text-[var(--bp-font-default)] font-medium block text-center">{formatNumberWithCommas(result.price.toString())}</span>
+									<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">مجموع قابل پرداخت ({market?.currency2.code}):</span>
+									<span className="text-[var(--bp-font-default)] font-medium block text-center max-md:text-sm">
+										{formatNumberWithCommas(result.price.toString())}
+									</span>
 								</div>
 								<div className="flex flex-col">
-									<span className="text-sm text-[var(--bp-font-gray-default)]">میانگین قیمت وزنی ({market?.currency2.code}):</span>
-									<span className="text-[var(--bp-font-default)] font-medium block text-center">{formatNumberWithCommas(result.avgPrice.toString())}</span>
+									<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">میانگین قیمت وزنی ({market?.currency2.code}):</span>
+									<span className="text-[var(--bp-font-default)] font-medium block text-center max-md:text-sm">
+										{formatNumberWithCommas(result.avgPrice.toString())}
+									</span>
 								</div>
 							</div>
 						)}
@@ -148,16 +154,16 @@ function ActivityList({ data, activeTab, setActiveTab }: IProps) {
 			{activeTab !== "match" && !!data.length && (
 				<div className="flex flex-col gap-4 p-3 bg-[#f2f2f2] dark:bg-[#222222] rounded-lg text-[var(--bp-font-default)]">
 					<div className="flex gap-2 items-center">
-						<span className="text-sm text-[var(--bp-font-gray-default)]">مجموع باقی‌مانده ({market?.currency1.code}):</span>
-						<span className="text-[var(--bp-font-default)] font-medium">{formatNumberWithCommas(totalRemain.toString())}</span>
+						<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">مجموع باقی‌مانده ({market?.currency1.code}):</span>
+						<span className="text-[var(--bp-font-default)] font-medium max-md:text-sm">{formatNumberWithCommas(totalRemain.toString())}</span>
 					</div>
 					<div className="flex gap-2 items-center">
-						<span className="text-sm text-[var(--bp-font-gray-default)]">مجموع کل ({market?.currency2.code}):</span>
-						<span className="text-[var(--bp-font-default)] font-medium">{formatNumberWithCommas(totalValue.toString())}</span>
+						<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">مجموع کل ({market?.currency2.code}):</span>
+						<span className="text-[var(--bp-font-default)] font-medium max-md:text-sm">{formatNumberWithCommas(totalValue.toString())}</span>
 					</div>
 					<div className="flex gap-2 items-center">
-						<span className="text-sm text-[var(--bp-font-gray-default)]">میانگین قیمت وزنی ({market?.currency2.code}):</span>
-						<span className="text-[var(--bp-font-default)] font-medium">{formatNumberWithCommas(weightedAveragePrice)}</span>
+						<span className="text-sm text-[var(--bp-font-gray-default)] max-md:text-xs">میانگین قیمت وزنی ({market?.currency2.code}):</span>
+						<span className="text-[var(--bp-font-default)] font-medium max-md:text-sm">{formatNumberWithCommas(weightedAveragePrice)}</span>
 					</div>
 				</div>
 			)}

@@ -35,7 +35,7 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 				type="button"
 				key={pageNumber}
 				onClick={() => handlePageChange(pageNumber)}
-				className={`rounded-lg w-8 h-8 flex items-center justify-center cursor-pointer outline-none ${page === pageNumber ? "bg-primary text-white" : "hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
+				className={`rounded-lg w-8 h-8 max-md:w-5 max-md:h-5 flex items-center justify-center cursor-pointer outline-none max-md:text-xs ${page === pageNumber ? "bg-primary text-white" : "hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
 			>
 				{pageNumber}
 			</button>
@@ -45,7 +45,7 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 
 		if (page > 3) {
 			buttons.push(
-				<span key="dots1" className="px-2">
+				<span key="dots1" className="px-2 max-md:px-[2px] max-md:text-xs">
 					...
 				</span>,
 			);
@@ -60,7 +60,7 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 
 		if (page < totalPages - 2) {
 			buttons.push(
-				<span key="dots2" className="px-2">
+				<span key="dots2" className="px-2 max-md:px-[2px] max-md:text-xs">
 					...
 				</span>,
 			);
@@ -149,34 +149,35 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 			{currentData.length ? (
 				<>
 					<div className="px-3 pb-3 flex items-center gap-2 justify-between border-b border-[var(--bp-sf-border-gray-faded)] text-sm text-[var(--bp-font-gray-default)]">
-						<div className="flex-grow max-w-[calc(34%-6px)]">
-							<div className="flex items-center gap-2 cursor-pointer w-fit" onClick={() => handleSort("name")}>
+						<div className="flex-grow max-w-[calc(34%-6px)] max-md:max-w-[40%]">
+							<div className="flex items-center max-md:text-xs gap-2 cursor-pointer w-fit" onClick={() => handleSort("name")}>
 								نام رمزارز
 								<div className="flex flex-col">
-									<Arrow className={`w-4 h-4 rotate-90 ${sort === "name_asc" ? "text-primary" : ""}`} />
-									<Arrow className={`w-4 h-4 rotate-270 ${sort === "name_desc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-90 ${sort === "name_asc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-270 ${sort === "name_desc" ? "text-primary" : ""}`} />
 								</div>
 							</div>
 						</div>
-						<div className="w-[calc(22%-6px)]">
-							<div className="flex items-center gap-2 cursor-pointer w-fit" onClick={() => handleSort("price")}>
+						<div className="w-[calc(22%-6px)] max-md:w-[30%]">
+							<div className="flex items-center max-md:text-xs gap-2 cursor-pointer w-fit" onClick={() => handleSort("price")}>
 								قیمت
 								<div className="flex flex-col">
-									<Arrow className={`w-4 h-4 rotate-90 ${sort === "price_asc" ? "text-primary" : ""}`} />
-									<Arrow className={`w-4 h-4 rotate-270 ${sort === "price_desc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-90 ${sort === "price_asc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-270 ${sort === "price_desc" ? "text-primary" : ""}`} />
 								</div>
 							</div>
 						</div>
-						<div className="w-[calc(22%-6px)] flex justify-center">
-							<div className="text-center flex items-center gap-2 cursor-pointer w-fit" onClick={() => handleSort("change")}>
-								تغییرات ۲۴ ساعت
+						<div className="w-[calc(22%-6px)] max-md:w-[calc(30%-16px)] flex justify-center">
+							<div className="text-center flex items-center max-md:text-xs gap-2 cursor-pointer w-fit" onClick={() => handleSort("change")}>
+								<span className="max-md:hidden">تغییرات ۲۴ ساعت</span>
+								<span className="md:hidden">24</span>
 								<div className="flex flex-col">
-									<Arrow className={`w-4 h-4 rotate-90 ${sort === "change_asc" ? "text-primary" : ""}`} />
-									<Arrow className={`w-4 h-4 rotate-270 ${sort === "change_desc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-90 ${sort === "change_asc" ? "text-primary" : ""}`} />
+									<Arrow className={`w-4 h-4 max-md:w-3 max-md:h-3 rotate-270 ${sort === "change_desc" ? "text-primary" : ""}`} />
 								</div>
 							</div>
 						</div>
-						<div className="w-[calc(22%-6px)] text-center"></div>
+						<div className="w-[calc(22%-6px)] max-md:hidden text-center"></div>
 					</div>
 					<div
 						{...swipeHandlers}
@@ -193,13 +194,13 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 				<div className="flex items-center justify-center">داده‌ای موجود نیست</div>
 			)}
 			{totalPages > 1 && (
-				<div className="flex justify-end items-center gap-2 mt-4">
+				<div className="flex justify-end max-md:justify-center items-center gap-2 max-md:gap-1 mt-4">
 					<button
 						onClick={() => handlePageChange(page - 1)}
 						disabled={page === 1}
-						className={`rounded-lg w-8 h-8 flex items-center justify-center outline-none ${page === 1 ? "opacity-50" : "cursor-pointer hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
+						className={`rounded-lg w-8 h-8 max-md:w-5 max-md:h-5 flex items-center justify-center outline-none ${page === 1 ? "opacity-50" : "cursor-pointer hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
 					>
-						<img src="/images/svg/left.svg" alt="left" className="rotate-180" />
+						<img src="/images/svg/left.svg" alt="left" className="rotate-180 max-md:w-4 max-md:h-4" />
 					</button>
 
 					{renderPaginationButtons()}
@@ -207,9 +208,9 @@ function MarketList({ data, page, setPage, activeTab, setActiveTab }: IProps) {
 					<button
 						onClick={() => handlePageChange(page + 1)}
 						disabled={page === totalPages}
-						className={`rounded-lg w-8 h-8 flex items-center justify-center outline-none ${page === totalPages ? "opacity-50" : "cursor-pointer hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
+						className={`rounded-lg w-8 h-8 max-md:w-5 max-md:h-5 flex items-center justify-center outline-none ${page === totalPages ? "opacity-50" : "cursor-pointer hover:bg-[var(--bp-bg-gray-faded)] hover:transition"}`}
 					>
-						<img src="/images/svg/left.svg" alt="left" />
+						<img src="/images/svg/left.svg" alt="left" className="max-md:w-4 max-md:h-4" />
 					</button>
 				</div>
 			)}

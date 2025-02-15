@@ -73,31 +73,33 @@ function Market() {
 		!!data && (
 			<div className="flex flex-col gap-11 w-full">
 				{!!market && (
-					<div className="rounded-lg flex px-4 py-3 items-center justify-between gap-8 bg-[#f2f2f2] dark:bg-[#222222]">
+					<div className="rounded-lg flex px-4 py-3 items-center justify-between max-md:flex-col max-md:items-start gap-8 max-md:gap-4 bg-[#f2f2f2] dark:bg-[#222222]">
 						<div className="flex items-center gap-2">
-							<img src={market.currency1.image} alt={market.currency1.title} width={92} height={92} />
+							<img src={market.currency1.image} alt={market.currency1.title} className="md:w-16 md:h-16 w-8 h-8" />
 							<div className="flex flex-col gap-4">
-								<h2 className="text-[var(--bp-font-default)] text-xl font-bold flex gap-1 items-center">
+								<h2 className="text-[var(--bp-font-default)] text-xl font-bold flex gap-1 items-center max-md:text-base">
 									{market.currency1.title_fa}
-									<span className="text-[var(--bp-font-gray-default)] text-lg font-normal">({market.currency1.code})</span>
+									<span className="text-[var(--bp-font-gray-default)] text-lg font-normal max-md:text-xs">({market.currency1.code})</span>
 								</h2>
-								<div className="text-[var(--bp-font-gray-default)] text-xl font-normal">{market.currency1.title}</div>
+								<div className="text-[var(--bp-font-gray-default)] text-xl font-normal max-md:hidden">{market.currency1.title}</div>
 							</div>
 						</div>
-						<div className="flex flex-col gap-4">
-							<div className="flex items-center gap-4 text-[var(--bp-font-default)] text-lg">
+						<div className="flex flex-col gap-4 max-md:w-full">
+							<div className="flex items-center gap-4 text-[var(--bp-font-default)] text-lg max-md:flex-row-reverse max-md:justify-between max-md:w-full">
 								<span
 									className={`[direction:ltr] font-medium text-xs text-center ${market.price_info.change ? (market.price_info.change >= 0 ? "text-[var(--bp-font-pos-default)]" : "text-[var(--bp-font-neg-default)]") : ""}`}
 								>
 									{formatPriceChange(market.price_info.change)}
 								</span>
-								<span>{formatNumberWithCommas(market.price_info.price)}</span>
-								<span>{market.currency2.title_fa}</span>
+								<div className="flex items-center gap-4 max-md:gap-2">
+									<span className="max-md:text-sm">{formatNumberWithCommas(market.price_info.price)}</span>
+									<span className="max-md:text-[10px]">{market.currency2.title_fa}</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				)}
-				<div className="flex items-end justify-between border-b border-b-[#666]">
+				<div className="flex items-end justify-between border-b border-b-[#666] max-md:overflow-x-auto [&::-webkit-scrollbar]:h-[1px]">
 					<Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={activityTabs} />
 				</div>
 				<ActivityList data={currentData} activeTab={activeTab} setActiveTab={setActiveTab} />

@@ -55,15 +55,15 @@ function Home() {
 	) : (
 		<div className="flex flex-col gap-11 w-full">
 			<h2 className="text-2xl font-medium text-[var(--bp-font-default)]">لیست بازارها</h2>
-			<div className="flex items-end justify-between border-b border-b-[#666]">
+			<div className="flex items-end justify-between border-b border-b-[#666] gap-2">
 				<Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={marketTabs} />
-				<div className="relative mb-2">
+				<div className="relative mb-2 max-w-[300px] flex-grow">
 					<input
 						value={term}
 						onChange={(e) => setTerm(e.currentTarget.value)}
 						type="text"
 						placeholder="نام ارزدیجیتال را جستجو کنید"
-						className="rounded-lg h-12 flex items-center text-xs leading-[18px] pe-3.5 ps-[52px] border border-[var(--bp-font-gray-faded)] outline-none w-[300px]"
+						className="rounded-lg h-12 flex items-center text-xs leading-[18px] pe-3.5 ps-[52px] border border-[var(--bp-font-gray-faded)] outline-none md:w-[300px] w-full"
 					/>
 					<img src="/images/svg/search.svg" alt="search" className="absolute top-1/2 right-3.5 -translate-y-1/2" />
 				</div>

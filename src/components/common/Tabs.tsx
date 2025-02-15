@@ -22,7 +22,7 @@ const Tabs = <T,>({ tabs, activeTab, setActiveTab }: IProps<T>) => {
 				<button
 					key={index}
 					onClick={() => handleTabClick(tab.value)}
-					className={`pb-3 outline-none px-4 cursor-pointer relative after:h-0.5 after:w-8 after:content-[''] after:absolute after:bottom-0 after:right-1/2 after:translate-x-1/2 font-bold text-sm ${activeTab === tab.value ? "text-[var(--bp-font-default)] after:bg-primary" : "text-[var(--bp-font-gray-faded)]"}`}
+					className={`pb-3 outline-none px-4 max-md:px-2 cursor-pointer relative after:h-0.5 after:w-8 after:content-[''] after:absolute after:bottom-0 after:right-1/2 after:translate-x-1/2 font-bold text-sm max-md:text-xs whitespace-nowrap ${activeTab === tab.value ? "text-[var(--bp-font-default)] after:bg-primary" : "text-[var(--bp-font-gray-faded)]"}`}
 				>
 					{tab.label}
 				</button>

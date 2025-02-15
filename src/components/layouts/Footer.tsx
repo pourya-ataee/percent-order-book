@@ -8,12 +8,12 @@ function Footer() {
 				<Link to={"/"}>
 					<Logo className={"h-11 w-44 *:transition dark:[&_#logo-svg-text]:fill-[#d8d8d8] [&_#logo-svg-text]:fill-[#333]"} />
 				</Link>
-				<div className="flex justify-between items-center p-4 rounded-lg bg-[var(--bp-bg-gray-faded)]">
+				<div className="flex max-sm:flex-col max-sm:gap-6 justify-between sm:items-center p-4 rounded-lg bg-[var(--bp-bg-gray-faded)]">
 					<div className="flex items-center gap-6">
 						<img src="/images/svg/logoIcon.svg" alt="bitpin-logo" />
 						<span className="font-bold text-xl">اپلیکیش بیت‌پین</span>
 					</div>
-					<div className="flex items-center gap-4">
+					<div className="flex items-center gap-4 max-sm:justify-center">
 						<a
 							target="_blank"
 							href="https://bitpin.ir/app-download/"
@@ -24,10 +24,10 @@ function Footer() {
 					</div>
 				</div>
 				<div className="py-4 border-t border-[var(--bp-sf-border-gray-muted)]">
-					<div className="flex gap-2 items-center text-sm justify-center">
-						<p>کلیه حقوق این سایت متعلق به بیت‌پین است</p>
+					<div className="flex gap-2 items-center text-sm justify-center max-md:flex-col">
+						<p className="max-md:text-center">کلیه حقوق این سایت متعلق به بیت‌پین است</p>
 						<span>v1.0.0</span>
-						<span>|</span>
+						<span className="max-md:hidden">|</span>
 						<span>
 							Made with ❤️ by <span className="font-semibold">Pourya Ataee</span>
 						</span>
